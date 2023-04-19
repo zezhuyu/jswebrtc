@@ -1,8 +1,12 @@
 {
-  "name": "jswebrtc",
+  "name": "react-jswebrtc",
   "version": "1.0.0",
-  "description": "SRS webrtc player",
-  "main": "index.js",
+  "description": "SRS webrtc player for React",
+  "main": "dist/jswebrtc.min.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zezhuyu/jswebrtc"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -11,8 +15,14 @@
     "player"
   ],
   "author": "Derek Chan",
+  "contributors": [
+    {
+      "name": "Zezhu Yu",
+      "url":"https://github.com/zezhuyu"
+    }
+  ],
   "license": "MIT",
   "devDependencies": {
-    "uglifyjs": "^2.4.11"
+    "uglify-js": "^3.17.4"
   }
 }

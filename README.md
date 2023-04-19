@@ -1,28 +1,54 @@
-# JSWebrtc – 支持 SRS 的 Webrtc 播放器
+# react-jswebrtc
 
-JSWebrtc 对浏览器的 Webrtc 做了简单的封装，支持 [SRS](https://github.com/ossrs/srs) 的 RTC 流的播放.
+react-jswebrtc 在原有 [JSWebrtc](https://github.com/kernelj/jswebrtc) 基础上改进，支持在react.js项目中引入.
 
-快速上手: 
-```html
-<script src="dist/jswebrtc.min.js"></script>
-<div class="jswebrtc" data-url="webrtc://osiii.com/live/livestream"></div>
-```
+原作者： [Derek Chan](https://github.com/kernelj)
 
-具体示例: [examples](/examples)
+原项目地址: https://github.com/kernelj/jswebrtc
 
-
+项目地址: https://github.com/zezhuyu/jswebrtc
 ## 用法
 
-JSWebrtc 播放器可以通过 HTML 创建，只需给指定元素添加 CSS 样式 `jswebrtc` 即可: 
+安装: 
 
-```html
-<div class="jswebrtc" data-url="<url>"></div>
+```bash
+npm i react-jswebrtc
 ```
 
-也可以通过在 JavaScript 中调用 `JSWebrtc.Player()` 构造方法来创建: 
+在React.js中使用: 
+
+```html
+<video id="webrtc_player"></video>
+```
 
 ```javascript
-var player = new JSWebrtc.Player(url [, options]);
+import JSWebrtc from "react-jswebrtc"
+
+if(JSWebrtc.isSupported()){
+      var video = document.getElementById('webrtc_player');
+      const player = new JSWebrtc.Player('webrtc://10.0.2.2/live/livestream', {video: video});
+      player.play()
+}
+```
+
+在DPlayer中使用:
+
+```javascript
+import JSWebrtc from "react-jswebrtc"
+
+const dp = new DPlayer({
+    container: document.getElementById('dplayer'),
+    video: {
+        type: 'webrtc',
+        customType: {
+            'webrtc': function (video, player) {
+                if(JSWebrtc.isSupported()){
+                    new JSWebrtc.Player(url, {video: video});
+                }
+            }
+        },
+    },
+})
 ```
 
 参数 `url` 是一个 webrtc 开头的地址 (webrtc://...).
@@ -51,7 +77,7 @@ var player = new JSWebrtc.Player(url [, options]);
 如何构建 min 文件:
 
 ```sh
-npm install
+npm i
 ./build.sh
 ```
 
