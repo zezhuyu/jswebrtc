@@ -1,6 +1,0 @@
-src
-node_modules
-build.sh
-.DS_Store
-.git
-.gitignore
