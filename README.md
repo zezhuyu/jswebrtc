@@ -26,7 +26,7 @@ import JSWebrtc from "react-jswebrtc"
 
 if(JSWebrtc.isSupported()){
       var video = document.getElementById('webrtc_player');
-      const player = new JSWebrtc.Player('webrtc://10.0.2.2/live/livestream', {video: video});
+      const player = new JSWebrtc.Player(url, {video: video});
       player.play()
 }
 ```
