@@ -8,7 +8,7 @@
     "url": "https://github.com/zezhuyu/jswebrtc"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "./node_modules/uglify-js/bin/uglifyjs src/jswebrtc.js -o dist/jswebrtc.min.js"
   },
   "keywords": [
     "webrtc",
