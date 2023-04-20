@@ -78,6 +78,6 @@ const dp = new DPlayer({
 
 ```sh
 npm i
-./build.sh
+npm run build
 ```
 
