@@ -185,21 +185,24 @@ JSWebrtc.Player = (function () {
                     api += '/';
                 }
 
-                var url = 'http://' + _self.urlParams.server + ':' + port + api;
-                for (var key in _self.urlParams.user_query) {
-                    if (key !== 'api' && key !== 'play') {
-                        url += '&' + key + '=' + _self.urlParams.user_query[key];
+                var url = "";
+
+                if(_self.options.api){
+                    url = _self.options.api;
+                }else{
+                    url = 'http://' + _self.urlParams.server + ':' + port + api;
+                    for (var key in _self.urlParams.user_query) {
+                        if (key !== 'api' && key !== 'play') {
+                            url += '&' + key + '=' + _self.urlParams.user_query[key];
+                        }
                     }
                 }
-
                 // @see https://github.com/rtcdn/rtcdn-draft
                 var data = {
                     api: url, streamurl: _self.urlParams.url, clientip: null, sdp: offer.sdp
                 };
-                //console.log("offer: " + JSON.stringify(data));
 
                 JSWebrtc.HttpPost(url, JSON.stringify(data)).then(function (res) {
-                    //console.log("answer: " + JSON.stringify(res));
                     resolve(res.sdp);
                 }, function (rej) {
                     reject(rej);
@@ -249,6 +252,7 @@ JSWebrtc.Player = (function () {
     Player.prototype.destroy = function () {
         this.pause();
         this.pc && this.pc.close() && this.pc.destroy();
+        this.pc = null;
         this.audioOut && this.audioOut.destroy();
     };
 

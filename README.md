@@ -1,21 +1,21 @@
 # react-jswebrtc
 
-react-jswebrtc 在原有 [JSWebrtc](https://github.com/kernelj/jswebrtc) 基础上改进，支持在react.js项目中引入.
+Base on [JSWebrtc](https://github.com/kernelj/jswebrtc), Now react-jswebrtc supports import from React.js applications.
 
-原作者： [Derek Chan](https://github.com/kernelj)
+Author: [Derek Chan](https://github.com/kernelj)
 
-原项目地址: https://github.com/kernelj/jswebrtc
+Original Repo: https://github.com/kernelj/jswebrtc
 
-项目地址: https://github.com/zezhuyu/jswebrtc
-## 用法
+Repo: https://github.com/zezhuyu/jswebrtc
+## Usage
 
-安装: 
+Install: 
 
 ```bash
 npm i react-jswebrtc
 ```
 
-在React.js中使用: 
+Use in React.js: 
 
 ```html
 <video id="webrtc_player"></video>
@@ -31,7 +31,7 @@ if(JSWebrtc.isSupported()){
 }
 ```
 
-在DPlayer中使用:
+Use in DPlayer:
 
 ```javascript
 import JSWebrtc from "react-jswebrtc"
@@ -51,30 +51,29 @@ const dp = new DPlayer({
 })
 ```
 
-参数 `url` 是一个 webrtc 开头的地址 (webrtc://...).
+`url`: must start with webrtc://.
 
-参数 `options` 支持下列的配置项: 
+`options` parameters support: 
 
-- `video` – 用于播放视频的 HTML Video 元素.
-- `autoplay` - 是否自动播放. 默认 `false`.
-- `onPlay(player)` – 播放后回调
-- `onPause(player)` – 暂停后回调
+- `video` – for customized the html video element.
+- `api` – for customized api url. by default it connects to `http://ip:1985/rtc/v1/play/`.
+- `autoplay` - this will automatically mute and play the video after the player loads. `false` by default.
+- `onPlay(player)` – callback function when video is played.
+- `onPause(player)` – callback function when video is paused.
 
 
 ## JSWebrtc.Player API
 
-实例 `JSWebrtc.Player` 支持以下方法和属性:
+`JSWebrtc.Player` instance support following operations:
 
-- `.play()` – 开始
-- `.pause()` – 暂停
-- `.stop()` – 停止
-- `.destroy()` – 停止播放并清理相关的播放资源.
-- `.paused` – 只读, 是否暂停播放
+- `.play()` – start.
+- `.pause()` – pause.
+- `.stop()` – stop.
+- `.destroy()` – stop playing the video and free the resources.
+- `.paused` – check if it is paused.
 
 
-## 构建
-
-如何构建 min 文件:
+## Build
 
 ```sh
 npm i

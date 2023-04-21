@@ -1,6 +1,6 @@
 {
   "name": "react-jswebrtc",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "SRS webrtc player for React",
   "main": "dist/jswebrtc.min.js",
   "repository": {
